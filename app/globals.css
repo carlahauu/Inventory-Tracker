@@ -1,0 +1,57 @@
+.home {
+    background: #bf5250;
+    overflow: hidden;
+}
+
+.addButton{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 30px;
+    padding-right: 372px;
+    padding-left: 372px;
+    font-size: 20px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #642221;
+    background-color: #9c3d3c; 
+    color: #de7777;
+}
+
+.addButton:hover{
+    background-color: #8a3534;
+    cursor: pointer;
+}
+
+.addIcon{
+    padding-left: 10px;
+}
+
+.addModalButton{
+    background-color: #cd5959;
+    padding: 20px;
+    border-style: none;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+}
+
+.addModalButton:hover{
+    cursor: pointer;
+    background-color: #e17c7c;
+}
+
+.removeButton{
+    background-color: #cd5959;
+    padding: 10px;
+    border-style: none;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+}
+
+.removeButton:hover{
+    cursor: pointer;
+    background-color: #e17c7c;
+}
