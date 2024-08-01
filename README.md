@@ -1,6 +1,7 @@
 # Inventory Tracker
 
-<img width="1418" alt="image" src="https://github.com/user-attachments/assets/e7063ca0-a3f5-44fb-bcaf-fe26375381d2">
+<img width="1418" alt="image" src="https://github.com/user-attachments/assets/61efdf41-dcac-46ea-b0c2-7e2f3da6fd58">
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
