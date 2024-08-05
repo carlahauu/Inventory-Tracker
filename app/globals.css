@@ -1,57 +1,136 @@
 .home {
-    background: #bf5250;
-    overflow: hidden;
+  background: #04091c;
+  overflow: hidden;
 }
 
-.addButton{
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    padding: 30px;
-    padding-right: 372px;
-    padding-left: 372px;
-    font-size: 20px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: #642221;
-    background-color: #9c3d3c; 
-    color: #de7777;
+.homeContainer {
+  display: flex;
+  flex-direction: row;
 }
 
-.addButton:hover{
-    background-color: #8a3534;
-    cursor: pointer;
+.addButton {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 30px;
+  padding-right: 372px;
+  padding-left: 372px;
+  font-size: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #2332a6fb;
+  background-color: #17237f55;
+  color: #ced6f9a4;
 }
 
-.addIcon{
-    padding-left: 10px;
+.generateButton {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 30px;
+  padding-right: 332px;
+  padding-left: 332px;
+  font-size: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #556cff00;
+  background-color: #ffffff;
+  color: #2332a6fb;
+  margin-top: 15px;
 }
 
-.addModalButton{
-    background-color: #cd5959;
-    padding: 20px;
-    border-style: none;
-    border-radius: 10px;
-    font-size: 15px;
-    color: white;
+.generateButton:hover {
+  cursor: pointer;
 }
 
-.addModalButton:hover{
-    cursor: pointer;
-    background-color: #e17c7c;
+.addButton:hover {
+  background-color: #1428789f;
+  cursor: pointer;
 }
 
-.removeButton{
-    background-color: #cd5959;
-    padding: 10px;
-    border-style: none;
-    border-radius: 10px;
-    font-size: 15px;
-    color: white;
+.addIcon {
+  padding-left: 10px;
 }
 
-.removeButton:hover{
-    cursor: pointer;
-    background-color: #e17c7c;
+.sparkleIcon {
+  padding-left: 10px;
+}
+
+.recipeSparkleIcon {
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.addModalButton {
+  background-color: #04091c;
+  padding: 20px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 15px;
+  color: white;
+}
+
+.addModalButton:hover {
+  cursor: pointer;
+  background-color: #142878;
+}
+
+.removeButton {
+  background-color: #050a35fb;
+  padding: 10px;
+  border-style: none;
+  border-radius: 10px;
+  font-size: 15px;
+  color: white;
+}
+
+.removeButton:hover {
+  cursor: pointer;
+  background-color: #142878;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchBar {
+  padding-bottom: 20px;
+  margin-top: -20px;
+}
+
+.quantityButton {
+  padding-top: -10px;
+  border-style: solid;
+  border-color: #2332a64d;
+  background-color: #04091c;
+  color: white;
+}
+
+.quantityButton:hover {
+  cursor: pointer;
+  background-color: #001772;
+}
+
+.quantity p {
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+.recipesContainer {
+  background: #ffffff;
+}
+
+.pantryTitle {
+  color: #04091c;
+  font-size: 30px;
+}
+
+.recipeTitle {
+  display: flex;
+  flex-direction: row;
 }
