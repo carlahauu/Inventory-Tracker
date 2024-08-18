@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import { Add, AutoAwesome, PlusOne, Remove } from "@mui/icons-material";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useState, useEffect } from "react";
 import {
   Box,
@@ -23,6 +24,7 @@ import {
 } from "firebase/firestore";
 import { Sidebar } from "./Sidebar";
 
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -42,7 +44,32 @@ export default function Home() {
   const [inventory, setInventory] = useState([]);
   const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState("");
-  const [itemQty, setItemQty] = useState(0)
+  const [itemQty, setItemQty] = useState(0);
+
+  const geminiKey = process.env.GEMINI_KEY;
+  const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+  const [response, setResponse] = useState("");
+  const [recipe, setRecipe] = useState("");
+  const generatedRecipe = recipe;
+
+  async function recipeAI() {
+    const snapshot = query(collection(firestore, "inventory"));
+    const docs = await getDocs(snapshot);
+    const inventoryList = [];
+    docs.forEach((doc) => {
+      inventoryList.push({ name: doc.id, ...doc.data() });
+    });
+    setInventory(inventoryList);
+    const inventoryItems = inventoryList.map((item) => item.name);
+    const prompt = `Generate recipes with everything in this array: ${inventoryItems}.  This dataset is where you can find the names of these ingredients. For each dish, please also provide a list of the exact measurements needed for each ingredient. No need to display ingredients given to you.`;
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    setRecipe(text);
+    console.log(recipe);
+  }
 
   const updateInventory = async () => {
     const snapshot = query(collection(firestore, "inventory"));
@@ -56,6 +83,20 @@ export default function Home() {
 
   useEffect(() => {
     updateInventory();
+  }, []);
+
+  const names = [];
+
+  const getItemNames = async () => {
+    const snapshot = query(collection(firestore, "inventory"));
+    const docs = await getDocs(snapshot);
+    docs.forEach((doc) => {
+      names.push(doc.id);
+    });
+  };
+
+  useEffect(() => {
+    getItemNames();
   }, []);
 
   const addItem = async (item) => {
@@ -89,11 +130,10 @@ export default function Home() {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       const { quantity } = docSnap.data();
-        await deleteDoc(docRef);
+      await deleteDoc(docRef);
     }
     await updateInventory();
   };
-
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -134,7 +174,6 @@ export default function Home() {
                   onClick={() => {
                     addItem(itemName);
                     setItemName("");
-                    addQty(itemQty);
                     handleClose();
                   }}
                 >
@@ -228,14 +267,14 @@ export default function Home() {
               Add Item
               <Add className="addIcon"></Add>
             </button>
-            <button className="generateButton">
+            <button className="generateButton" onClick={() => recipeAI()}>
               Generate Recipes!
               <AutoAwesome className="sparkleIcon"></AutoAwesome>
             </button>
           </div>
         </Box>
       </section>
-      <Sidebar></Sidebar>
+      <Sidebar generatedRecipe={generatedRecipe}></Sidebar>
     </section>
   );
 }
